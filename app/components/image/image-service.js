@@ -17,9 +17,9 @@ export default class ImageService {
 		// ^^^^^^^ How do you call this function?
 		imgApi.get('')
 			.then(res => {
-				console.log(res)
+				// console.log(res)
 				imgArr = res.data.images
-				console.log(imgArr)
+				// console.log(imgArr)
 				drawImage(imgArr)
 			})
 	}

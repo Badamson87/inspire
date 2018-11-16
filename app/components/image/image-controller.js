@@ -6,8 +6,7 @@ let _imageService = new ImageService()
 
 function drawImage(arr) {
   let i = Math.floor(Math.random() * arr.length)
-  console.log(arr[i])
-
+  // console.log(arr[i])
   document.getElementById("body").style.backgroundImage = `url('${arr[i].url}')`;
 }
 
@@ -16,11 +15,8 @@ function drawImage(arr) {
 
 export default class ImageController {
   constructor() {
-    console.log("image controller is here")
+    // console.log("image controller is here")
     _imageService.getImage(drawImage)
-
-
-
   }
 }
 
