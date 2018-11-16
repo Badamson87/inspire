@@ -8,13 +8,20 @@ const imgApi = axios.create({
 	timeout: 3000
 });
 
+let imgArr = []
+
 export default class ImageService {
-	getImage(callWhenDone) {
+	constructor() {
+	}
+	getImage(drawImage) {
 		// ^^^^^^^ How do you call this function?
-		console.log("Looking for a good pic")
-		imgApi().then(res => {
-			console.log('Image Data:', res.data)
-			callWhenDone(res.data)
-		})
+		imgApi.get('')
+			.then(res => {
+				console.log(res)
+				imgArr = res.data.images
+				console.log(imgArr)
+				drawImage(imgArr)
+			})
 	}
 }
+
