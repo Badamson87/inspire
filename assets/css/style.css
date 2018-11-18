@@ -1,7 +1,7 @@
 #body{
   display: flex;
   position: center;
-  background-size: auto  
+  background-size: cover  
 }
 .quote{
   display: flex;

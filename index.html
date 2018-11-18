@@ -6,6 +6,7 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
 	 crossorigin="anonymous">
 	<link rel="stylesheet" href="assets/css/style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
 	 crossorigin="anonymous">
 
@@ -14,24 +15,20 @@
 
 	<body class="row" id="body">
 		<div class="col-12 m-2" id="weather">&#176;</div>
+
 		<div>
 			<h3 class="quote col-12 mt-5" id="quote"></h3>
 		</div>
-		<div id="todo">
-			<div class="form-group">
-				<label for="exampleFormControlSelect2">Example multiple select</label>
-				<select multiple class="form-control" id="exampleFormControlSelect2">
-				</select>
-			</div>
-		</div>
+
+		<div id="todo"></div>
 
 		<form onsubmit="app.controllers.toDoController.addTodoFromForm(event)">
 			<input name="toDoText" type="text">
-			<button>Add</button>
+			<button type="submit">Add</button>
 		</form>
+		<button onclick="app.controllers.toDoController.removeTodo(event)">Remove</button>
 
-
-
+		<!-- <button onsubmit="app.controllers.toDoController.getTodos()">get todos</button> -->
 
 		<!--JS Libraries-->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>

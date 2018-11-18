@@ -4,22 +4,22 @@ import TodoService from "./todo-service.js";
 
 var todoService = new TodoService
 let list = ""
-// Use this getTodos function as your callback for all other edits
 function getTodos() {
 	//FYI DONT EDIT ME :)
 	todoService.getTodos(draw)
 }
 
 function draw(todos) {
-	//WHAT IS MY PURPOSE?
-	//BUILD YOUR TODO TEMPLATE HERE
-	var template = ''
 	todos.forEach(todo => {
-		template += `
-			<p>${todo.description}</p>	
+		list += `<a class="dropdown-item" href="#">
+			<div class="form-check">
+				<input class="form-check-input todoCheckBox" type="checkbox" value="${todo._id}" id="">
+				<label class="form-check-label" for="defaultCheck1">${todo.description}</label>
+			</div>
+			</a>	
 			`
 	})
-	document.getElementById("todo").innerHTML = template
+	document.getElementById("todo").innerHTML = list
 	//DONT FORGET TO LOOP
 }
 
@@ -29,8 +29,6 @@ export default class TodoController {
 	constructor() {
 		getTodos()
 	}
-
-
 
 	// You will need four methods
 	// getTodos should request your api/todos and give an array of todos to your callback fn
@@ -48,12 +46,7 @@ export default class TodoController {
 			description: formData.get('toDoText'),
 			completed: false
 		}
-
-		//PASSES THE NEW TODO TO YOUR SERVICE
-		//DON'T FORGET TO REDRAW THE SCREEN WITH THE NEW TODO
-		//YOU SHOULDN'T NEED TO CHANGE THIS
 		todoService.addTodo(todo, getTodos)
-		//^^^^^^^ EXAMPLE OF HOW TO GET YOUR TOODOS AFTER AN EDIT
 	}
 
 	toggleTodoStatus(todoId) {
@@ -62,8 +55,13 @@ export default class TodoController {
 		// YEP THATS IT FOR ME
 	}
 
-	removeTodo(todoId) {
-		// ask the service to run the remove todo with this id
+	removeTodo() {
+		let checkboxs = document.querySelectorAll(".todoCheckBox:checked")
+		for (let index = 0; index < checkboxs.length; index++) {
+			let todo = checkboxs[index];
+			todoService.removeTodo(todo.value, getTodos)
+			console.log(todo.value)
+		}
 
 		// ^^^^ THIS LINE OF CODE PROBABLY LOOKS VERY SIMILAR TO THE toggleTodoStatus
 	}

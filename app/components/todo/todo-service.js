@@ -15,7 +15,6 @@ let todoList = []
 export default class TodoService {
 
 	getTodos(draw) {
-		console.log("Getting the Todo List")
 		todoApi.get('')
 			.then((res) => {
 				draw(res.data.data)
@@ -24,16 +23,15 @@ export default class TodoService {
 	}
 
 	addTodo(todo, callback) {
-		// WHAT IS THIS FOR???
 		todoApi.post('', todo)
-			.then(function (res) { // <-- WHAT DO YOU DO AFTER CREATING A NEW TODO?
+			.then(function (res) {
 				console.log(res)
 				callback()
 			})
 			.catch(logError)
 	}
 
-	toggleTodoStatus(todoId) {
+	toggleTodoStatus(todoId, getTodos) {
 		// MAKE SURE WE THINK THIS ONE THROUGH
 		//STEP 1: Find the todo by its index **HINT** todoList
 
@@ -47,9 +45,11 @@ export default class TodoService {
 			.catch(logError)
 	}
 
-	removeTodo() {
-		// Umm this one is on you to write.... The method is a DELETE
-
+	removeTodo(todoId, getTodos) {
+		todoApi.delete(todoId)
+			.then(function (res) {
+				getTodos()
+			})
+			.catch(logError)
 	}
-
 }
