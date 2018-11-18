@@ -1,12 +1,17 @@
 #body{
   display: flex;
   position: center;
-  
+  background-size: auto  
 }
-
 .quote{
   display: flex;
-  text-align: center;
+  justify-content: center;
   color: white;
-  text-shadow: 0 0 10px black
+  text-shadow: 0 0 10px black;
+}
+#weather{
+  display: flex;
+  color: white;
+  text-shadow: 0 0 10px black;
+  justify-content: flex-end
 }
