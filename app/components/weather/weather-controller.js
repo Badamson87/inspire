@@ -16,7 +16,7 @@ export default class WeatherController {
 
 			// converts kelvin to fahrenheit
 			temp = (temp - 273.15) * 9 / 5 + 32
-			document.getElementById("weather").innerText = Math.floor(temp).toString()
+			document.getElementById("weather").innerText = Math.floor(temp).toString() + "\u00B0"
 		})
 	}
 }

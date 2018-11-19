@@ -3,24 +3,27 @@ import TodoService from "./todo-service.js";
 
 
 var todoService = new TodoService
-let list = ""
 function getTodos() {
 	//FYI DONT EDIT ME :)
 	todoService.getTodos(draw)
 }
 
 function draw(todos) {
+	let list = ""
 	todos.forEach(todo => {
+		let checked = ""
+		if (todo.completed) {
+			checked = "checked"
+		}
 		list += `<a class="dropdown-item" href="#">
 			<div class="form-check">
-				<input class="form-check-input todoCheckBox" type="checkbox" value="${todo._id}" id="">
-				<label class="form-check-label" for="defaultCheck1">${todo.description}</label>
+				<input id="${todo._id}" class="form-check-input todoCheckBox" type="checkbox" onchange="app.controllers.toDoController.toggleTodoStatus(this.value)" value="${todo._id}" ${checked}>
+				<label class="form-check-label" for="${todo._id}">${todo.description}</label>
 			</div>
 			</a>	
 			`
 	})
 	document.getElementById("todo").innerHTML = list
-	//DONT FORGET TO LOOP
 }
 
 
@@ -32,9 +35,7 @@ export default class TodoController {
 
 	// You will need four methods
 	// getTodos should request your api/todos and give an array of todos to your callback fn
-	// addTodo takes in a todo and posts it to the server
 	// toggleTodoStatus takes in a todo marks its status as completed and puts it to the server
-	// removeTodo takes in a todoId and sends a delete request to the server
 	// **** HINT: Everytime you make a change to any todo don't forget to get the todo list again
 
 
@@ -49,11 +50,18 @@ export default class TodoController {
 		todoService.addTodo(todo, getTodos)
 	}
 
+
+
+
+
 	toggleTodoStatus(todoId) {
-		// asks the service to edit the todo status
 		todoService.toggleTodoStatus(todoId, getTodos)
-		// YEP THATS IT FOR ME
 	}
+
+
+
+
+
 
 	removeTodo() {
 		let checkboxs = document.querySelectorAll(".todoCheckBox:checked")
