@@ -21,13 +21,16 @@
 			<h5 class="quote mt-3" id="author"></h5>
 		</div>
 
-		<div id="todo"></div>
+		<div id="thingsToDo"></div>
+		<div class="col-12" id="todo"></div>
 
-		<form onsubmit="app.controllers.toDoController.addTodoFromForm(event)">
-			<input name="toDoText" type="text">
-			<button type="submit">Add</button>
-		</form>
-		<button onclick="app.controllers.toDoController.removeTodo(event)">Remove</button>
+		<div class="col">
+			<form onsubmit="app.controllers.toDoController.addTodoFromForm(event)">
+				<input name="toDoText" type="text">
+				<button type="submit">Add</button>
+			</form>
+			<button onclick="app.controllers.toDoController.removeTodo(event)">Remove</button>
+		</div>
 
 		<!-- <button onsubmit="app.controllers.toDoController.getTodos()">get todos</button> -->
 

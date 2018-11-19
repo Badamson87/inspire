@@ -24,6 +24,7 @@ function draw(todos) {
 			`
 	})
 	document.getElementById("todo").innerHTML = list
+	document.getElementById("thingsToDo").innerText = "Open Projects:" + todos.length
 }
 
 
